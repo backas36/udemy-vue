@@ -20,6 +20,8 @@
     <button @click="counter++">Incre</button>
     <button @click="reduceCounter">Remove</button>
     <p>Result: {{ counter }}</p>
+    <input type="text" v-on:input="setName($event,'Yang')">
+    <p>Your name : {{ name }}</p>
   </section>
 </body>
 

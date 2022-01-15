@@ -1,14 +1,19 @@
-const app = Vue.createApp({
+Vue.createApp({
   data() {
     return {
-      counter: 0,
+      output: "",
+      confirmOutputValue: "",
     };
   },
   methods: {
-    reduceCounter() {
-      this.counter--;
+    alertClick() {
+      alert("ohmygod");
+    },
+    setOutput(event) {
+      this.output = event.target.value;
+    },
+    confirmOutput() {
+      this.confirmOutputValue = this.output;
     },
   },
-});
-
-app.mount("#events");
+}).mount("#assignment");

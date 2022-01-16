@@ -2,11 +2,10 @@ const assignment = Vue.createApp({
   data() {
     return {
       value: 0,
-      result: "",
     };
   },
   watch: {
-    result() {
+    calResult() {
       setTimeout(() => {
         console.log("fire");
         console.log(this.value);
@@ -16,19 +15,18 @@ const assignment = Vue.createApp({
   },
   computed: {
     calResult() {
-      if (this.vaule < 37) {
-        return (this.result = "Not there yet");
+      if (this.value < 37) {
+        return "Not yet there";
+      } else if (this.value === 37) {
+        return this.value;
       } else {
-        return (this.result = "Too much");
+        return "too much";
       }
     },
   },
   methods: {
-    add5() {
-      this.value += 5;
-    },
-    add1() {
-      this.value += 1;
+    addNumber(num) {
+      this.value += num;
     },
   },
 });

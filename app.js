@@ -3,12 +3,41 @@ const app = Vue.createApp({
     return {
       counter: 0,
       name: "",
+      //fullName: "",
+      lastName: "",
     };
+  },
+  watch: {
+    counter(value) {
+      if (value > 20) {
+        setTimeout(() => {
+          this.counter = 0;
+          console.log(this);
+        }, 1000);
+      }
+    },
+    //name(value, oldValue) {
+    //  //this.fullName = this.name + " " + "Yang";
+    //  //參數 value 就是綁定的 property : name
+    //  if (value === "") {
+    //    this.fullName = "";
+    //  } else {
+    //    this.fullName = value + " " + this.lastName;
+    //  }
+    //  console.log(oldValue);
+    //},
+    //lastName(value) {
+    //  if (value === "") {
+    //    this.lastName = "";
+    //  } else {
+    //    this.fullName = this.name + " " + value;
+    //  }
+    //},
   },
   computed: {
     fullName() {
       console.log("fire fullName");
-      return this.name ? `${this.name} Yang` : "";
+      return this.name ? `${this.name} ${this.lastName}` : "";
     },
   },
   methods: {
@@ -21,10 +50,6 @@ const app = Vue.createApp({
     },
     resetInput() {
       this.name = "";
-    },
-    outputFullName() {
-      console.log("fire outputFullName"); //每一次都會觸發，即使沒有更新，例如 按了 counter add 10 button，畫面看起來是沒變的，但其實每一次都是新的 method
-      return this.name ? `${this.name} Yang` : "";
     },
   },
 });

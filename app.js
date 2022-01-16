@@ -7,29 +7,38 @@ const app = Vue.createApp({
     };
   },
   computed: {
-    valueStyle() {
-      if (this.inputValue === "user1") {
-        return this.showParagraph
-          ? {
-              user1: true,
-              visible: true,
-            }
-          : { user1: true, hidden: true };
-      }
-      if (this.inputValue === "user2") {
-        return this.showParagraph
-          ? {
-              user2: true,
-              visible: true,
-            }
-          : { user2: true, hidden: true };
-      }
+    //valueStyle() {
+    //  if (this.inputValue === "user1") {
+    //    return this.showParagraph
+    //      ? {
+    //          user1: true,
+    //          visible: true,
+    //        }
+    //      : { user1: true, hidden: true };
+    //  }
+    //  if (this.inputValue === "user2") {
+    //    return this.showParagraph
+    //      ? {
+    //          user2: true,
+    //          visible: true,
+    //        }
+    //      : { user2: true, hidden: true };
+    //  }
+    //},
+    pargraphClasses() {
+      return {
+        user1: this.inputValue === "user1",
+        user2: this.inputValue === "user2",
+        visible: this.showParagraph,
+        hidden: !this.showParagraph,
+      };
     },
   },
   methods: {
-    setInputValue(event) {
-      this.inputValue = event.target.value;
-    },
+    //使用 v-model 就不須這個 method (setInputValue,setBackGroundColor)了
+    //setInputValue(event) {
+    //  this.inputValue = event.target.value;
+    //},
     setShowParagraph() {
       this.showParagraph = !this.showParagraph;
     },

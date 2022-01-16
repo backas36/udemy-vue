@@ -18,9 +18,9 @@
   <section id="assignment">
     <!-- 1) Fetch the user input and use it as a CSS class -->
     <!-- The entered class should be added to the below paragraph -->
-    <input type="text" @input="setInputValue" />
+    <input type="text" v-model="inputValue" />
     <!-- (available classes: "user1", "user2") -->
-    <p :class="valueStyle">
+    <p :class="pargraphClasses">
       Style me!
     </p>
     <button @click="setShowParagraph">Toggle Paragraph</button>
@@ -28,7 +28,7 @@
     <!-- Clicking the button should toggle between the two options -->
 
     <!-- 3) Add dynamic inline styling to the below paragraph and let the user enter a background-color -->
-    <input type="text" @input="setBackGroundColor" />
+    <input type="text" v-model="backGroundColor" />
     <p :style="{backgroundColor:backGroundColor}">Style me inline!</p>
   </section>
 </body>

@@ -48,4 +48,4 @@ const app = Vue.createApp({
   },
 }).mount("#assignment");
 
-// :class 可以放兩個以上的 computed 嗎？
+// :class 可以放兩個以上的 computed 嗎？ 可以。必須要用 array syntax

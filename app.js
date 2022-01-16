@@ -1,57 +1,36 @@
-const app = Vue.createApp({
+const assignment = Vue.createApp({
   data() {
     return {
-      counter: 0,
-      name: "",
-      //fullName: "",
-      lastName: "",
+      value: 0,
+      result: "",
     };
   },
   watch: {
-    counter(value) {
-      if (value > 20) {
-        setTimeout(() => {
-          this.counter = 0;
-          console.log(this);
-        }, 1000);
-      }
+    result() {
+      setTimeout(() => {
+        console.log("fire");
+        console.log(this.value);
+        this.value = 0;
+      }, 5000);
     },
-    //name(value, oldValue) {
-    //  //this.fullName = this.name + " " + "Yang";
-    //  //參數 value 就是綁定的 property : name
-    //  if (value === "") {
-    //    this.fullName = "";
-    //  } else {
-    //    this.fullName = value + " " + this.lastName;
-    //  }
-    //  console.log(oldValue);
-    //},
-    //lastName(value) {
-    //  if (value === "") {
-    //    this.lastName = "";
-    //  } else {
-    //    this.fullName = this.name + " " + value;
-    //  }
-    //},
   },
   computed: {
-    fullName() {
-      console.log("fire fullName");
-      return this.name ? `${this.name} ${this.lastName}` : "";
+    calResult() {
+      if (this.vaule < 37) {
+        return (this.result = "Not there yet");
+      } else {
+        return (this.result = "Too much");
+      }
     },
   },
   methods: {
-    add(num) {
-      this.counter = this.counter + num;
+    add5() {
+      this.value += 5;
     },
-    reduce(num) {
-      this.counter = this.counter - num;
-      // this.counter--;
-    },
-    resetInput() {
-      this.name = "";
+    add1() {
+      this.value += 1;
     },
   },
 });
 
-app.mount("#events");
+assignment.mount("#assignment");

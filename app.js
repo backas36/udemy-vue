@@ -1,26 +1,42 @@
 const app = Vue.createApp({
   data() {
     return {
-      boxASelected: false,
-      boxBSelected: false,
-      boxCSelected: false,
+      inputValue: "",
+      showParagraph: true,
+      backGroundColor: "",
     };
   },
   computed: {
-    boxAClasses() {
-      return { active: this.boxASelected };
-    },
-  },
-  methods: {
-    boxSelected(box) {
-      if (box === "A") {
-        this.boxASelected = !this.boxASelected;
-      } else if (box === "B") {
-        this.boxBSelected = !this.boxBSelected;
-      } else {
-        this.boxCSelected = !this.boxCSelected;
+    valueStyle() {
+      if (this.inputValue === "user1") {
+        return this.showParagraph
+          ? {
+              user1: true,
+              visible: true,
+            }
+          : { user1: true, hidden: true };
+      }
+      if (this.inputValue === "user2") {
+        return this.showParagraph
+          ? {
+              user2: true,
+              visible: true,
+            }
+          : { user2: true, hidden: true };
       }
     },
   },
-});
-app.mount("#styling");
+  methods: {
+    setInputValue(event) {
+      this.inputValue = event.target.value;
+    },
+    setShowParagraph() {
+      this.showParagraph = !this.showParagraph;
+    },
+    setBackGroundColor(event) {
+      this.backGroundColor = event.target.value;
+    },
+  },
+}).mount("#assignment");
+
+// :class 可以放兩個以上的 computed 嗎？

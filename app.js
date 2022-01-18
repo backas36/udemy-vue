@@ -1,7 +1,6 @@
 const app = Vue.createApp({
   data() {
     return {
-      showDetails: false,
       friends: [
         {
           id: "manuel",
@@ -18,16 +17,36 @@ const app = Vue.createApp({
       ],
     };
   },
+});
+
+app.component("friend-contact", {
+  template: `
+   <li>
+      <h2>{{friend.name}}</h2>
+      <button @click="toggleDetails">{{detailAreVisible? 'Hide':'Show'}} Details</button>
+      <ul v-if="detailAreVisible">
+        <li><strong>Phone:</strong> 0{{friend.phone}}</li>
+        <li><strong>Email:</strong> {{friend.email}}</li>
+      </ul>
+    </li>
+  `,
+  data() {
+    return {
+      detailAreVisible: false,
+      friend: {
+        id: "sadfkewfew",
+        name: "Ashi fewf",
+        phone: "09123456789",
+        email: "wefwefwef@8898.gmail.com",
+      },
+    };
+  },
   methods: {
     toggleDetails() {
-      this.showDetails = !this.showDetails;
+      this.detailAreVisible = !this.detailAreVisible;
     },
   },
 });
+//第一個參數是 own HTML element name, 第二個參數是放 createApp 的 object，然後不使用 mount，而是使用 template
+
 app.mount("#app");
-
-/*
-現在只要 button 按下去，所有的 detail 都會顯示，可是
-如果當我們只需要顯示一個朋友detail 怎麼辦？
-
-*/
